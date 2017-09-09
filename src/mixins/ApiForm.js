@@ -9,38 +9,51 @@ export default {
       type: Number,
       required: false,
     },
+    obj: {
+      type: Object,
+      required: false,
+      default: () => null,
+    },
   },
   data() {
     return {
-      restObj: {},
+      requestObj: {},
     };
   },
+  created() {
+    if (this.obj) {
+      this.requestObj = this.obj;
+    }
+    if (this.objId) {
+      this.load(this.objId);
+    }
+  },
   methods: {
-    create(createCallback = (response) => {}, errCallback = (err) => {}) {
+    create(saveCallback = (response) => {}, errCallback = (err) => {}) {
       this.$api.post(this.route, this.requestObj).then((response) => {
-        createCallback(response);
+        saveCallback(response);
       }).catch((err) => {
         errCallback(err);
       });
     },
-    update(createCallback = (response) => {}, errCallback = (err) => {}) {
+    update(saveCallback = (response) => {}, errCallback = (err) => {}) {
       this.$api.patch(this.route, this.requestObj).then((response) => {
-        createCallback(response);
+        saveCallback(response);
       }).catch((err) => {
         errCallback(err);
       });
     },
-    save(createCallback = (response) => {}, errCallback = (err) => {}) {
+    save(saveCallback = (response) => {}, errCallback = (err) => {}) {
       if (this.requestObj.id) {
-        this.update(createCallback, errCallback);
+        this.update(saveCallback, errCallback);
       } else {
-        this.create(createCallback, errCallback);
+        this.create(saveCallback, errCallback);
       }
     },
-    load(errCallback = (err) => {}) {
-      if (this.objId) {
-        this.$api.get(`${this.route}/${this.objId}/`).then((response) => {
-          this.restObj = response.data;
+    load(id, errCallback = (err) => {}) {
+      if (id) {
+        this.$api.get(`${this.route}/${id}/`).then((response) => {
+          this.requestObj = response.data;
         }).catch((err) => {
           errCallback(err);
         });
