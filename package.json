@@ -1,12 +1,10 @@
 {
   "name": "vue-rest",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "Boiler plate for using vue for REST API consumption",
   "author": "Kimura <joseduardo.kimura@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
