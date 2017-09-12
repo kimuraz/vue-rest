@@ -1,6 +1,6 @@
 # vue-rest
 
-> Boiler plate for using vue for REST API consumption
+> Plugin for using vue + axios for REST API consumption
 
 ## Installation
 

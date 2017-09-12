@@ -12,3 +12,4 @@ test/unit/coverage
 *.ntvs*
 *.njsproj
 *.sln
+*.swp
