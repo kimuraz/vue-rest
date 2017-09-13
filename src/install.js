@@ -17,10 +17,9 @@ const VueRest = {
       Vue.mixin(apiMixin);
     });
 
+    let api = null; 
     if (options && options.axiosOptions) {
-      const api = axios.create({
-        ...options.axiosOptions,
-      });
+      api = axios.create(options.axiosOptions);
       if (options.axiosOptions.localStorageAuthorization) {
         const localStorageAuthorization = options.axiosOptions.localStorageAuthorization;
         api.interceptors.request.use((config) => {
@@ -33,6 +32,9 @@ const VueRest = {
             Object.assign(config.headers, { Authorization: `${prefix} ${token}` });
           }
         });
+      }
+      if (!api) {
+        api = axios.create();
       }
       Vue.api = api;
       Vue.prototype.$api = api;
