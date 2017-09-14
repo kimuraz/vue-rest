@@ -4,7 +4,8 @@
 /* eslint-disable no-console */
 import Vue from 'vue';
 import axios from 'axios';
-import mixins from './mixins';
+import ApiList from '../mixins/ApiList';
+import ApiForm from '../mixins/ApiForm';
 
 const VueRest = {
   install: (Vue, options) => {
@@ -13,11 +14,8 @@ const VueRest = {
     }
 
     Vue.vueRestInstall = true;
-    Object.keys(mixins).forEach((apiMixin) => {
-      Vue.mixin(apiMixin);
-    });
 
-    let api = null; 
+    let api = null;
     if (options && options.axiosOptions) {
       api = axios.create(options.axiosOptions);
       if (options.axiosOptions.localStorageAuthorization) {
@@ -33,13 +31,14 @@ const VueRest = {
           }
         });
       }
-      if (!api) {
-        api = axios.create();
-      }
-      Vue.api = api;
-      Vue.prototype.$api = api;
     }
+    if (!api) {
+      api = axios.create();
+    }
+    Vue.api = api;
+    Vue.prototype.$api = api;
   },
 };
 
+export { ApiList, ApiForm };
 export default VueRest;
