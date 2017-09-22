@@ -1,0 +1,17 @@
+language: javascript
+node_js:
+  - "iojs"
+  - "8"
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+   - npm install
+   - yarn install
+
+jobs:
+  include:
+    - stage: 'build'
+      script: npm build
