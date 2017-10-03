@@ -13,3 +13,4 @@ test/unit/coverage
 *.njsproj
 *.sln
 *.swp
+*.swo
