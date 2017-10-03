@@ -4,8 +4,8 @@
 /* eslint-disable no-console */
 import Vue from 'vue';
 import axios from 'axios';
-import ApiList from '../ApiList';
-import ApiForm from '../ApiForm';
+import ApiList from './ApiList';
+import ApiForm from './ApiForm';
 
 const VueRest = {
   install: (Vue, options) => {

@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/vue-rest/index.js',
+  entry: './src/install.js',
   output: {
-    path: path.resolve(__dirname, 'bin'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'vue-rest.bundle.js',
   },
   module: {
