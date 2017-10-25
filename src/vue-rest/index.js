@@ -8,7 +8,7 @@ import ApiList from '../ApiList';
 import ApiForm from '../ApiForm';
 
 const VueRest = {
-  install: (Vue, options) => {
+  install(Vue, options) {
     if (Vue.vueRestInstalled) {
       return;
     }

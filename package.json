@@ -1,6 +1,6 @@
 {
   "name": "vue-rest",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Plugin for using vue + axios for REST API consumption",
   "author": "Kimura <joseduardo.kimura@gmail.com>",
   "private": false,
