@@ -6,7 +6,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/vue-rest/index.js'
+    'vue-rest': './src/vue-rest/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,7 +16,6 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
     }
   },
   module: {
