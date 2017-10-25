@@ -42,3 +42,4 @@ const VueRest = {
 
 Vue.use(VueRest);
 export { ApiList, ApiForm };
+export default VueRest;
