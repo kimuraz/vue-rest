@@ -5,8 +5,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 
-import ApiForm from './ApiForm';
-import ApiList from './ApiList';
+import ApiForm from './mixins/ApiForm';
+import ApiList from './mixins/ApiList';
 
 const VueRest = {
   install(Vue, options) {
