@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/kimuraz/vue-rest.svg?branch=master)](https://travis-ci.org/kimuraz/vue-rest)
+[![Build Status](https://travis-ci.org/kimuraz/vue-rest.svg?branch=dev)](https://travis-ci.org/kimuraz/vue-rest)
 # vue-rest
 
 > Plugin for using vue + axios for REST API consumption
