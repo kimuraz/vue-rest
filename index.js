@@ -5,6 +5,9 @@
 import Vue from 'vue';
 import axios from 'axios';
 
+import ApiForm from './ApiForm';
+import ApiList from './ApiList';
+
 const VueRest = {
   install(Vue, options) {
     if (Vue.vueRestInstalled) {
@@ -37,5 +40,7 @@ const VueRest = {
     Vue.prototype.$api = api;
   },
 };
+
+export { ApiList, ApiForm };
 
 export default VueRest;
