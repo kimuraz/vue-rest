@@ -4,8 +4,6 @@
 /* eslint-disable no-console */
 import Vue from 'vue';
 import axios from 'axios';
-import ApiList from '../ApiList';
-import ApiForm from '../ApiForm';
 
 const VueRest = {
   install(Vue, options) {
@@ -40,6 +38,4 @@ const VueRest = {
   },
 };
 
-Vue.use(VueRest);
-export { ApiList, ApiForm };
 export default VueRest;

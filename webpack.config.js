@@ -6,7 +6,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    'vue-rest': './src/vue-rest/index.js'
+    'vue-rest': './index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

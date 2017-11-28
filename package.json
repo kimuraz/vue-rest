@@ -1,6 +1,6 @@
 {
   "name": "vue-rest",
-  "version": "0.1.19",
+  "version": "0.1.23",
   "description": "Plugin for using vue + axios for REST API consumption",
   "author": "Kimura <joseduardo.kimura@gmail.com>",
   "private": false,
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "vue": "^2.4.2"
+    "vue": "^2.5.9"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
