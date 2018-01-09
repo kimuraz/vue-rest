@@ -30,6 +30,7 @@ const VueRest = {
           if (token) {
             Object.assign(config.headers, { Authorization: `${prefix} ${token}` });
           }
+          return config;
         });
       }
     }
