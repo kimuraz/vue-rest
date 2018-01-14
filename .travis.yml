@@ -8,12 +8,13 @@ cache:
     - "node_modules"
 
 install:
-   - npm install
    - yarn install
 
 jobs:
   include:
     - stage: 'lint'
-      script: npm run lint
+      script: yarn run lint
+    - state: 'test'
+      script: yarn run test
     - stage: 'build'
-      script: npm build
+      script: yarn build
