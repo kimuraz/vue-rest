@@ -14,18 +14,23 @@ export default {
       required: false,
       default: () => null,
     },
+    loadErrCb: {
+      type: Function,
+      required: false,
+      defaut: (err) => {},
+    },
   },
   data() {
     return {
       requestObj: {},
     };
   },
-  created() {
+  mounted() {
     if (this.obj) {
       this.requestObj = this.obj;
     }
     if (this.objId) {
-      this.load(this.objId);
+      this.load(this.objId, this.loadErrCb);
     }
   },
   methods: {
@@ -37,7 +42,7 @@ export default {
       });
     },
     update(saveCallback = (response) => {}, errCallback = (err) => {}) {
-      this.$api.patch(this.route, this.requestObj).then((response) => {
+      this.$api.patch(`${this.route}/${this.requestObj.id}/`, this.requestObj).then((response) => {
         saveCallback(response);
       }).catch((err) => {
         errCallback(err);

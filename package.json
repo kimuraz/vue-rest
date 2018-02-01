@@ -77,7 +77,7 @@
   "jest": {
     "moduleNameMapper": {
       "mixins/(.*)$": "<rootDir>/mixins/$1.js",
-      "^vue$": "vue/dist/vue.common.js"
+      "^vue$": "vue/dist/vue.min.js"
     },
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
