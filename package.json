@@ -78,6 +78,7 @@
     "not ie <= 8"
   ],
   "jest": {
+    "testURL": "http://localhost/",
     "moduleNameMapper": {
       "mixins/(.*)$": "<rootDir>/mixins/$1.js",
       "^vue$": "vue/dist/vue.min.js"
