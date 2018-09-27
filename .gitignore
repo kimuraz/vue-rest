@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 test/unit/coverage
 coverage/
+deploy-docs.sh
 
 # Editor directories and files
 .editorconfig

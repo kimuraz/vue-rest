@@ -1,17 +1,23 @@
 [![Build Status](https://travis-ci.org/kimuraz/vue-rest.svg?branch=dev)](https://travis-ci.org/kimuraz/vue-rest)
 # vue-rest
 
-> Plugin for using vue + axios for REST API consumption
+Plugin for using vue + axios for REST API CRUD operations
 
 ## Installation
 
 ```shell
 $ npm i -S vue-rest
+
+OR
+
+$ yarn add vue-rest
 ```
 
 ## Documentation
 
-[Gitbook](https://kimuraz.gitbooks.io/vue-rest/content/)
+Checkout the docs:
+
+:book: [Docs](https://kimuraz.github.io/vue-rest/)
 
 ## Examples
 
