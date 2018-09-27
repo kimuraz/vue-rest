@@ -7,7 +7,9 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "build": "webpack"
+    "build": "webpack",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -59,6 +61,7 @@
     "url-loader": "^0.5.8",
     "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.2",
+    "vuepress": "^0.14.4",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
@@ -75,6 +78,7 @@
     "not ie <= 8"
   ],
   "jest": {
+    "testURL": "http://localhost/",
     "moduleNameMapper": {
       "mixins/(.*)$": "<rootDir>/mixins/$1.js",
       "^vue$": "vue/dist/vue.min.js"
