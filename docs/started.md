@@ -16,7 +16,9 @@ $ npm install vue-rest
 
 To add to your project, import it and the use `Vue.use(VueRest)` to properly use it.
 
-> Optionally you can add `axiosOptions` that is responsible for any options related to [axios]('https://github.com/mzabriskie/axios%29/')
+> Optionally you can add `axiosOptions` that is responsible for any options related to [axios]('https://github.com/mzabriskie/axios%29/').
+
+> You can also use `interceptors` to add interceptors alongside your config.
 
 ```js
 ...
@@ -26,6 +28,16 @@ import VueRest from 'vue-rest';
 Vue.use(VueRest, {
   axiosOptions: {
     baseURL: 'http://localhost/api/',
+  },
+  interceptors: {
+    responses: [
+      [fulfilled, rejected],
+      {
+        fulfilled,
+        rejected
+      }
+    ],
+    requests: []
   }
 });
 ```
