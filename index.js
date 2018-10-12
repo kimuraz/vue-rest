@@ -8,6 +8,33 @@ import axios from 'axios';
 import ApiForm from './mixins/ApiForm';
 import ApiList from './mixins/ApiList';
 
+function addInterceptors(interceptors, api) {
+  const {
+    requests: requestInterceptors,
+    responses: responseInterceptors,
+  } = interceptors;
+  if (requestInterceptors) {
+    requestInterceptors.forEach((interceptor) => {
+      if (Array.isArray(interceptor)) {
+        api.interceptors.request.use(...interceptor);
+      } else {
+        const { fulfilled, rejected } = interceptor;
+        api.interceptors.request.use(fulfilled, rejected);
+      }
+    });
+  }
+  if (responseInterceptors) {
+    responseInterceptors.forEach((interceptor) => {
+      if (Array.isArray(interceptor)) {
+        api.interceptors.response.use(...interceptor);
+      } else {
+        const { fulfilled, rejected } = interceptor;
+        api.interceptors.response.use(fulfilled, rejected);
+      }
+    });
+  }
+}
+
 const VueRest = {
   install(Vue, options) {
     if (Vue.vueRestInstalled) {
@@ -20,30 +47,7 @@ const VueRest = {
     if (options && options.axiosOptions) {
       api = axios.create(options.axiosOptions);
       if (options.interceptors) {
-        const {
-          requests: requestInterceptors,
-          responses: responseInterceptors,
-        } = options.interceptors;
-        if (requestInterceptors) {
-          requestInterceptors.forEach((interceptor) => {
-            if (Array.isArray(interceptor)) {
-              api.interceptors.request.use(...interceptor);
-            } else {
-              const { fulfilled, rejected } = interceptor;
-              api.interceptors.request.use(fulfilled, rejected);
-            }
-          });
-        }
-        if (responseInterceptors) {
-          responseInterceptors.forEach((interceptor) => {
-            if (Array.isArray(interceptor)) {
-              api.interceptors.response.use(...interceptor);
-            } else {
-              const { fulfilled, rejected } = interceptor;
-              api.interceptors.response.use(fulfilled, rejected);
-            }
-          });
-        }
+        addInterceptors(options.interceptors, api);
       }
       if (options.axiosOptions.localStorageAuthorization) {
         const localStorageAuthorization =
