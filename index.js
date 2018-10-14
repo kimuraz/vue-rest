@@ -8,6 +8,33 @@ import axios from 'axios';
 import ApiForm from './mixins/ApiForm';
 import ApiList from './mixins/ApiList';
 
+function addInterceptors(interceptors, api) {
+  const {
+    requests: requestInterceptors,
+    responses: responseInterceptors,
+  } = interceptors;
+  if (requestInterceptors) {
+    requestInterceptors.forEach((interceptor) => {
+      if (Array.isArray(interceptor)) {
+        api.interceptors.request.use(...interceptor);
+      } else {
+        const { fulfilled, rejected } = interceptor;
+        api.interceptors.request.use(fulfilled, rejected);
+      }
+    });
+  }
+  if (responseInterceptors) {
+    responseInterceptors.forEach((interceptor) => {
+      if (Array.isArray(interceptor)) {
+        api.interceptors.response.use(...interceptor);
+      } else {
+        const { fulfilled, rejected } = interceptor;
+        api.interceptors.response.use(fulfilled, rejected);
+      }
+    });
+  }
+}
+
 const VueRest = {
   install(Vue, options) {
     if (Vue.vueRestInstalled) {
@@ -19,16 +46,26 @@ const VueRest = {
     let api = null;
     if (options && options.axiosOptions) {
       api = axios.create(options.axiosOptions);
+      if (options.interceptors) {
+        addInterceptors(options.interceptors, api);
+      }
       if (options.axiosOptions.localStorageAuthorization) {
-        const localStorageAuthorization = options.axiosOptions.localStorageAuthorization;
+        const localStorageAuthorization =
+          options.axiosOptions.localStorageAuthorization;
         api.interceptors.request.use((config) => {
-          const token = localStorage.getItem(localStorageAuthorization.tokenItem);
+          const token = localStorage.getItem(
+            localStorageAuthorization.tokenItem,
+          );
           const prefix = localStorageAuthorization.prefix;
           if (!localStorageAuthorization.tokenItem || !prefix) {
-            console.error('[ERR - VueRest]: Miss configuration at localStorageAuthorization.');
+            console.error(
+              '[ERR - VueRest]: Miss configuration at localStorageAuthorization.',
+            );
           }
           if (token) {
-            Object.assign(config.headers, { Authorization: `${prefix} ${token}` });
+            Object.assign(config.headers, {
+              Authorization: `${prefix} ${token}`,
+            });
           }
           return config;
         });
