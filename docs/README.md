@@ -5,7 +5,7 @@ actionText: Get Started →
 actionLink: intro.md
 features:
 - title: Easy
-  details: Use etiher the $api prototype or one of the plugins 
+  details: Use either the $api prototype or one of the plugins
 - title: Axios
   details: It uses axios as requests library
 - title: CRUD operations faster
