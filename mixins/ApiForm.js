@@ -55,10 +55,10 @@ export default {
         this.create(saveCallback, errCallback);
       }
     },
-    load(id, errCallback = (err) => {}) {
+    load(id, errCallback = (err) => {}, dataKey) {
       if (id) {
         this.$api.get(`${this.route}/${id}/`).then((response) => {
-          this.requestObj = response.data;
+          this.requestObj = response[dataKey] || response.data;
         }).catch((err) => {
           errCallback(err);
         });
